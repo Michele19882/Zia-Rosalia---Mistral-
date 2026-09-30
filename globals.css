@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* Palette "Zia Rosalia": maiolica palermitana, limone, terracotta, rosa di Santa Rosalia */
+@theme {
+  --color-cream: #f8f0df;   /* pietra calcarea / tovaglia */
+  --color-sun: #f2b632;     /* limone e oro */
+  --color-terra: #b8452f;   /* terracotta / rosa antico */
+  --color-sea: #1d4f91;     /* blu maiolica */
+  --color-deep: #10284f;    /* blu notte */
+  --color-ink: #2a1b12;
+  --color-rose: #c8556b;
+  --font-display: Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.font-display {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* Carte: bordo sottile blu e ombra morbida, come una piastrella */
+.card-pop {
+  border: 1.5px solid var(--color-deep);
+  box-shadow: 0 12px 28px -14px rgba(16, 40, 79, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-pop:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 34px -14px rgba(16, 40, 79, 0.5);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1.5px solid var(--color-deep);
+  border-radius: 9999px;
+  padding: 0.85rem 1.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-sun { background: var(--color-sun); color: var(--color-deep); }
+.btn-sun:hover { background: #ffc94f; }
+.btn-terra { background: var(--color-terra); color: #fff; border-color: var(--color-terra); }
+.btn-terra:hover { background: #a03a26; }
+.btn-white { background: var(--color-cream); color: var(--color-deep); }
+.btn-white:hover { background: #fff; }
+
+.field {
+  width: 100%;
+  border: 1.5px solid var(--color-deep);
+  background: #fffaf0;
+  border-radius: 0.9rem;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+.field:focus {
+  border-color: var(--color-terra);
+  box-shadow: 0 0 0 3px rgba(242, 182, 50, 0.45);
+}
+
+/* Piastrella di maiolica ripetuta */
+.majolica {
+  background-color: var(--color-cream);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f8f0df'/%3E%3Cg fill='none' stroke='%231d4f91' stroke-width='2'%3E%3Crect x='2' y='2' width='60' height='60' rx='2'/%3E%3Cpath d='M32 8C40 20 44 24 56 32 44 40 40 44 32 56 24 44 20 40 8 32 20 24 24 20 32 8Z'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='6' fill='%23f2b632' stroke='%231d4f91' stroke-width='2'/%3E%3Cg fill='%23b8452f'%3E%3Ccircle cx='10' cy='10' r='3'/%3E%3Ccircle cx='54' cy='10' r='3'/%3E%3Ccircle cx='10' cy='54' r='3'/%3E%3Ccircle cx='54' cy='54' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+.tile-strip {
+  height: 22px;
+  background-repeat: repeat-x;
+  background-size: 64px 64px;
+  background-position: center;
+}
+
+/* Finestra ad arco arabo-normanno */
+.arch {
+  border-radius: 999px 999px 1.5rem 1.5rem;
+  border: 6px solid var(--color-cream);
+  outline: 1.5px solid var(--color-deep);
+  box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.55);
+}
+.arch-sm {
+  border-radius: 999px 999px 1rem 1rem;
+}
+
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: rotate(-6deg) translateY(0); }
+  50% { transform: rotate(-3deg) translateY(-6px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
